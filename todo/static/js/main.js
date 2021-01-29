@@ -67,17 +67,16 @@ const edit_todo = async (todoId, todo) => {
 
 const App = () => {
     const [todos, setTodos] = React.useState([]);
-    const [newTodo, setNewTodo] = React.useState("");
     const [refresh, setRefresh] = React.useState(false);
 
     React.useEffect(()=>{
         let todos = get_todos();
         todos.then(data => setTodos(data.reverse()));
-    }, [newTodo, refresh]);
+    }, [refresh]);
 
     return (
         <div>
-            <Dashboard addBtn={(val)=>{setNewTodo(val); create_todo(val)}}/>
+            <Dashboard addBtn={(val)=>{create_todo(val)}}/>
 
             {todos.length > 0 && <div className="d-grid gap-3">
                 {todos.map((item, ind)=>{
