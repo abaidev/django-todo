@@ -3,16 +3,33 @@ version: "3.9"
 services:
   db:
     image: postgres
-    environment:
-      - POSTGRES_DB=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+    restart: always
+#    volumes:
+#      - ./postgres_data:/var/lib/postgresql/data/
+    env_file: .env-db
+    ports:
+      - 5432:5432
+#    environment:
+#      - POSTGRES_DB=postgres
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASSWORD=postgres
   web:
     build: .
     # command: /entrypoint.sh #python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/appboxo
     ports:
-      - "8000:8000"
+      - "8070:8070"
+    env_file: .env
     depends_on:
       - db
+  redis:
+    image: redis
+    ports:
+      - 6379:6379
+  nginx:
+    build: ./nginx
+    ports:
+      - 8000:80
+    depends_on:
+      - web
