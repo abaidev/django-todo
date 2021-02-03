@@ -130,4 +130,4 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.AllowAny',
     )
 }
-CSRF_TRUSTED_ORIGINS = ['127.0.0.1']
+#CSRF_TRUSTED_ORIGINS = ['127.0.0.1'] # in development mode
