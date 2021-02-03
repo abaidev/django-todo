@@ -76,7 +76,7 @@ const App = () => {
 
     return (
         <div>
-            <Dashboard addBtn={(val)=>{create_todo(val)}}/>
+            <Dashboard addBtn={(val)=>{create_todo(val); setRefresh(!refresh);}}/>
 
             {todos.length > 0 && <div className="d-grid gap-3">
                 {todos.map((item, ind)=>{
