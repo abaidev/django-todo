@@ -10,4 +10,7 @@ python3 manage.py migrate
 
 # gunicorn for Heroku
 echo "Gunicorn starts"
-gunicorn server.wsgi:application --bind 0.0.0.0:8070
+gunicorn server.wsgi:application --bind 0.0.0.0:8000
+
+#echo "DJANGO SERVER starts"
+#python3 manage.py runserver 0.0.0.0:8000
