@@ -14,7 +14,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "SOME_NOT-TOP_SECRET")
 DEBUG = os.environ.get("DEBUG", True)
 
 if DEBUG:
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = ['appboxo-djtodo.herokuapp.com','127.0.0.1', '0.0.0.0']
 else:
     ALLOWED_HOSTS = ['appboxo-djtodo.herokuapp.com','127.0.0.1', '0.0.0.0']
 
@@ -73,12 +73,12 @@ Local development database settings.
 """
 DATABASES = {
     'default': {
-        'ENGINE': "django.db.backends.postgresql", #os.environ.get('DB_ENGINE', 'django.db.backends.sqlite3'),
-        'NAME': "postgres", #os.environ.get('DB_DATABASE_NAME', os.path.join(BASE_DIR, 'db.sqlite3')),
-        'USER': "postgres", #os.environ.get('DB_USERNAME', 'user'),
-        'PASSWORD': "postgres", #os.environ.get('DB_PASSWORD', 'password'),
-        'HOST': "db", #os.environ.get('DB_HOST', 'localhost'),
-        'PORT': 5432, #os.environ.get('DB_PORT', '5432'),
+        'ENGINE': "django.db.backends.postgresql",
+        'NAME': os.environ.get('DB_DATABASE_NAME', "postgres"),
+        'USER': os.environ.get('DB_USERNAME', "postgres"),
+        'PASSWORD': os.environ.get('DB_PASSWORD', "postgres"),
+        'HOST':  os.environ.get('DB_HOST', 'localhost'),
+        'PORT':  os.environ.get('DB_PORT', '5432'),
     }
 }
 """
