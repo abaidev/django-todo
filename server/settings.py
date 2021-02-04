@@ -14,9 +14,9 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "SOME_NOT-TOP_SECRET")
 DEBUG = os.environ.get("DEBUG", True)
 
 if DEBUG:
-    ALLOWED_HOSTS = ['appboxo-djtodo.herokuapp.com','127.0.0.1', '0.0.0.0']
+    ALLOWED_HOSTS = []
 else:
-    ALLOWED_HOSTS = ['appboxo-djtodo.herokuapp.com','127.0.0.1', '0.0.0.0']
+    ALLOWED_HOSTS = ['appboxo-djtodo.herokuapp.com','127.0.0.1', '0.0.0.0', 'localhost']
 
 
 INSTALLED_APPS = [
@@ -83,7 +83,6 @@ DATABASES = {
 }
 """
 Heroku database settings. Uncomment when you want to use it.
-Put this below the DATABASE={ ... } configuration.
 """
 # import dj_database_url
 # db_from_env = dj_database_url.config()

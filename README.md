@@ -1,16 +1,60 @@
-## Setup
-create virtual enviroment via `virtualenv venv` 
+## Content
+This project is built on images of ubuntu, nginx, postgres <br/>
+Frontend is implemented by using simple React components. <br/>
+Project settings are located in the `server` directory <br/>
+Application in the `todo` directory <br/>
 
-activate enviroment: <br/>
-`source ./venv/bin/activate` [Linux] <br/>
-`venv\Scripts\activate` [Windows] <br/>
+## Launch of the project 
+Clone the project. In the root directory of the project, execute the command
+`docker-compose up` (to start in detached mode use `docker-compose up -d`). 
+This will start the containers build process and execution 
+of `entrypoint.sh` file which provides migration to the database and the start of the webapp server. 
+After the build is complete and the server has started, go to `127.0.0.1:8000` <br/>
+To access the admin panel, you need to execute the command
+`python3 manage.py createsuperuser` in the cli of the container in Docker Desktop or via
+`docker exec -ti my_container sh c "python3 manage.py createsuperuser"`
 
-## Install Requirements
-`pip install -r requirements.txt`
+##### Git
+If you are using Windows OS, before downloading, make sure that
+`git config --global core.autocrlf false` otherwise there may be incorrect 
+endings in the `entrypoint.sh` file (CRLF instead of LF)
 
-#### `linux` users:
-create  `.env` file in main directory and fill the followings:
-	
+## Restart container
+`docker-compose restart` After making changes in the project, 
+this command will reload container
+
+## Remove container
+`docker-compose down` 
+
+## API:
+implemented with DRF. <br/>
+API ROOT: `/api/`
+
+##### GET
+`/api/todo/` list of todo tasks <br/>
+`/api/todo/<int:pk>/` details of certain todo <br/>
+
+##### POST
+`/api/todo/` create new todo <br/>
+
+##### PUT
+`/api/todo/<int:pk>/` update todo
+
+##### DELETE
+`/api/todo/<int:pk>/` delete todo
+
+## Learn More
+
+You can learn more in the [Django documentation](https://docs.djangoproject.com/en/3.1/).
+
+To learn DRF, check out the [Django Rest Framework documentation](https://www.django-rest-framework.org/).
+
+Deploy Django application on [Heroku Devcenter](https://devcenter.heroku.com/categories/python-support) 
+
+For hosting static and media files use [Google Cloud Storage](https://cloud.google.com/storage/docs/hosting-static-website)
+
+
+#### `.env` file :
 	SECRET_KEY = "Your Data goes herer"
 	DB_NAME = "Your Data goes herer"
 	DB_USER = "Your Data goes herer"
@@ -21,35 +65,7 @@ create  `.env` file in main directory and fill the followings:
 	REDIS_LOCATION = "Your Data goes herer"
 	
 	GS_BUCKET_NAME = "Your Data goes herer"
-	GS_PROJECT_ID = "Your Data goes herer"
-	GS_MEDIA_BUCKET_NAME = "Your Data goes herer"
+    GS_PROJECT_ID = "Your Data goes herer"
+    GS_MEDIA_BUCKET_NAME = "Your Data goes herer"
 
-#### `Windows` users:
-You need to specify all these in enviroment variables (example: [Youtube](https://www.youtube.com/watch?v=bEroNNzqlF4))
 
-## Migration
-
-after you declare all variables and input all needed data in them. run command in your terminal:
-`python manage.py migrate`<br/>
-then you need to create a superuser:
-`python manage.py createsuperuser`
-
-## Run server
-
-Now you ready to go, open terminal and type command: `python manage.py runserver`. It will run the project in the development mode.<br />
-Open [http://127.0.0.1:8000](http://127.0.0.1:8000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-## Learn More
-
-You can learn more in the [Django documentation](https://docs.djangoproject.com/en/3.1/).
-
-To learn DRF, check out the [Django Rest Framework documentation](https://www.django-rest-framework.org/).
-
-JSON Web Token Authentication support for Django REST Framework [REST framework JWT Auth](https://jpadilla.github.io/django-rest-framework-jwt/).
-
-Deploy Django application on [Heroku Devcenter](https://devcenter.heroku.com/categories/python-support) 
-
-For hosting static and media files use [Google Cloud Storage](https://cloud.google.com/storage/docs/hosting-static-website)
