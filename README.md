@@ -51,8 +51,6 @@ To learn DRF, check out the [Django Rest Framework documentation](https://www.dj
 
 Deploy Django application on [Heroku Devcenter](https://devcenter.heroku.com/categories/python-support) 
 
-For hosting static and media files use [Google Cloud Storage](https://cloud.google.com/storage/docs/hosting-static-website)
-
 
 #### `.env` file :
 	SECRET_KEY = "Your Data goes herer"
@@ -64,8 +62,5 @@ For hosting static and media files use [Google Cloud Storage](https://cloud.goog
 	
 	REDIS_LOCATION = "Your Data goes herer"
 	
-	GS_BUCKET_NAME = "Your Data goes herer"
-    GS_PROJECT_ID = "Your Data goes herer"
-    GS_MEDIA_BUCKET_NAME = "Your Data goes herer"
 
 
